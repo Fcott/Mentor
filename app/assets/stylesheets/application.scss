@@ -13,6 +13,10 @@ body {
   width: 24px;
 }
 
+.pic-middle {
+  width: 56px;
+}
+
 .container {
 	width: 80%;
 }
@@ -81,3 +85,49 @@ body {
       padding: 0px;
   }
 }
+
+// user page
+
+.user_top {
+  margin: 30px 10px;
+}
+
+.user_name {
+  font-size: 24px;
+
+}
+
+.avatar {
+
+}
+
+.head_lists {
+    font-size: 16px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,.05)!important;
+    li {
+      display: inline-block;
+      text-align: center;
+      margin-right: 30px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+}
+
+// Home Page
+
+.head_lines {
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0,0,0,.05)!important;
+  li {
+    display: inline-block;
+    text-align: center;
+    margin: 15px 15px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+// Story

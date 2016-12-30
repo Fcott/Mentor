@@ -1,0 +1,13 @@
+<%= form_for(@story, html: {multipart: true}) do |f| %>
+  <%= render "shared/errors", object: f.object %>
+  <div class="field">
+    <%= f.text_field :title, placeholder: "title" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Write your story.." %>
+  </div>
+  <!-- <span class="picture">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </span> -->
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

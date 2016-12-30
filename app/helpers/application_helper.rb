@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def profile_picture(user)
+  def user_picture(user)
     if user.image
       user.image
     else
