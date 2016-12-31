@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230122158) do
+ActiveRecord::Schema.define(version: 20161231050309) do
 
   create_table "stories", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.string   "cover_image"
+    t.string   "cover_image_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end

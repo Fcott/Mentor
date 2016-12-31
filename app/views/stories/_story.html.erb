@@ -1,21 +1,37 @@
 
-  <li id="story-<%= story.id %>">
-    <%= link_to user_picture(story.user), story.user %>
-    <span class="user"><%= link_to story.user.username, story.user %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(story.created_at) %> ago.
-    </span>
-    <span class="cover_image">
-      <%= image_tag story.image %>
-    </span>
-    <span class="title">
-      <%= story.title %>
-    </span>
+  <li id="story-<%= story.id %>" class="list">
+    <div class="story_base">
+      <div class="space table">
+        <div class="avatar">
+          <%= link_to user_path(story.user) do %>
+            <%= image_tag user_picture(story.user), class: "img-circle pic-middle" %>
+          <% end %>
+        </div>
+        <div class="info table">
+          <span class="username">
+            <%= link_to story.user.username, story.user %>
+          </span>
+          <div class="timestamp">
+            Posted <%= time_ago_in_words(story.created_at) %> ago.
+          </div>
+        </div>
+      </div>
 
-    <div class="edit delete">
-      <% if current_user?(story.user) %>
-        <%= link_to "edit", edit_story(story)} %>
-        <%= link_to "delete", story, method: :delete, data: {confirm: "You sure?"} %>
+      <%= link_to story_path(story) do %>
+        <div class="title space">
+          <%= story.title %>
+        </div>
+        <div class="cover_image space">
+          <%= image_tag attachment_url(story, :cover_image, :fill, 600, 300, format: "jpg") %>
+        </div>
+      <% end %>
+      <% if current_user == story.user %>
+        <span class="edit">
+          <%= link_to "edit", edit_story_path(story) %>
+        </span class="delete">
+        <span>
+          <%= link_to "delete", story, method: :delete, data: {confirm: "You sure?"} %>
+        </span>
       <% end %>
     </div>
   </li>

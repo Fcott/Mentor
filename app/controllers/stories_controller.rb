@@ -11,31 +11,43 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = current_user.stories.create(story_params)
-    if @story
+    @story = current_user.stories.build(story_params)
+    if @story.save
       flash[:success] = "Successfully created"
       redirect_to root_url
     else
       # @feed_items = []
-      render 'pages/home'
+      render 'new'
     end
   end
 
   def edit
-    #code
+    @story = Story.find_by(params[:id])
   end
 
   def update
-    #code
+    @story = Story.find_by(params[:id])
+    if @story.update(story_params)
+      flash[:success] = "Successfully updated"
+      redirect_to story_path(@story)
+    else
+      # @feed_items = []
+      render 'edit'
+    end
   end
 
-  def delete
-    #code
+  def destroy
+    @story = Story.find_by(params[:id])
+    user = @story.user
+    if @story.destroy
+      flash[:success] = "Successfully deleted"
+      redirect_to root_url
+    end
   end
 
   private
   def story_params
-    params.require(:story).permit(:title, :content, :image)
+    params.require(:story).permit(:title, :content, :cover_image)
   end
 
   def correct_user

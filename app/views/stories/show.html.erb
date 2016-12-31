@@ -1,27 +1,40 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="story">
-        <%= link_to user_picture(@story.user), @story.user %>
-        <span class="user"><%= link_to @story.user.username, @story.user %></span>
-        <span class="timestamp">
-          Posted <%= time_ago_in_words(@story.created_at) %> ago.
-        </span>
-        <span class="cover_image">
-          <%= image_tag @story.image %>
-        </span>
-        <span class="title">
-          <%= @story.title %>
-        </span>
-        <span class="content">
-          <%= @story.content %>
-        </span>
-
-        <div class="edit delete">
-          <% if current_user?(@story.user) %>
-            <%= link_to "edit", edit_story(@user) %>
-            <%= link_to "delete", @story, method: :delete, data: {confirm: "You sure?"} %>
+    <div class="story_base">
+      <div class="space table">
+        <div class="avatar">
+          <%= link_to user_path(@story.user) do %>
+            <%= image_tag user_picture(@story.user), class: "img-circle pic-middle" %>
           <% end %>
         </div>
+        <div class="info table">
+          <span class="username">
+            <%= link_to @story.user.username, @story.user %>
+          </span>
+          <div class="timestamp">
+            Posted <%= time_ago_in_words(@story.created_at) %> ago.
+          </div>
+        </div>
+      </div>
+        <div class="title">
+          <%= @story.title %>
+        </div>
+        <div class="cover_image">
+          <%= image_tag attachment_url(@story, :cover_image, :fill, 600, 300, format: "jpg") %>
+        </div>
+
+        <div class="content">
+          <%= @story.content %>
+        </div>
+
+        <% if current_user == @story.user %>
+          <span class="edit">
+            <%= link_to "edit", edit_story_path(@story) %>
+          </span class="delete">
+          <span>
+            <%= link_to "delete", @story, method: :delete, data: {confirm: "You sure?"} %>
+          </span>
+        <% end %>
     </div>
   </div>
 </div>
