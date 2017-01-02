@@ -31,6 +31,7 @@ gem 'font-awesome-sass'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "refile-s3", '~> 0.2.0'
+gem 'fog'
 
 
 group :development, :test do
