@@ -47,7 +47,7 @@ class StoriesController < ApplicationController
 
   private
   def story_params
-    params.require(:story).permit(:title, :content, :cover_image_id)
+    params.require(:story).permit(:title, :content, :cover_image)
   end
 
   def correct_user
