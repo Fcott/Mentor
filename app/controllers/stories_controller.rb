@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def show
-    @story = Story.find_by(params[:id])
+    @story = Story.find(params[:id])
   end
 
   def new
