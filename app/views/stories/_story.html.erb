@@ -22,7 +22,7 @@
           <%= story.title %>
         </div>
         <div class="cover_image space">
-          <%= image_tag attachment_url(story, :cover_image, :fill, 600, 300, format: "jpg") %>
+          <%= image_tag attachment_url(story, :cover_image) %>
         </div>
       <% end %>
       <% if current_user == story.user %>

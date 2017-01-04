@@ -87,17 +87,6 @@ body {
   margin-right: 5px;
 }
 
-// navbar for mobile
-
-@media (max-width: 767px){
-  .navbar-toggle {
-    margin: 0 0 14px 0;
-    padding: 6px 8px;
-  }
-  .navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu .dropdown-header {
-      padding: 0px;
-  }
-}
 
 // user page
 
@@ -116,11 +105,11 @@ body {
 
 .head_lists {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 15px;
     border-top: 1px solid rgba(0,0,0,.05)!important;
+    padding-left: 0;
     li {
       display: inline-block;
-      text-align: center;
       margin-right: 30px;
       &:last-child {
         margin-right: 0px;
@@ -137,15 +126,15 @@ body {
     display: inline-block;
     text-align: center;
     margin: 15px 15px;
-    &:last-child {
-      margin-right: 0px;
-    }
   }
 }
 
 .list {
   list-style-type: none;
 }
+
+
+
 
 // Story Feed
 
@@ -241,5 +230,85 @@ body {
     outline: none;
     max-width: 100%;
     min-height: 600px;
+  }
+}
+
+// For mobile
+@media (max-width: 767px){
+  .pic-middle {
+    width: 32px;
+  }
+  .container {
+  	width: 100%;
+  }
+  .col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .navbar-toggle {
+    margin: 0 0 14px 0;
+    padding: 6px 8px;
+  }
+  .navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu .dropdown-header {
+      padding: 0px;
+  }
+
+  .head_lists {
+      font-size: 14px;
+      padding-top: 5px;
+      border-top: 1px solid rgba(0,0,0,.05)!important;
+      text-align: center;
+      li {
+        display: inline-block;
+        text-align: center;
+        margin-right: 10px;
+      }
+  }
+
+  .head_lines {
+    font-size: 14px;
+    padding-left: 0;
+    text-align: center;
+    li {
+      margin: 5px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+  .stories {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .sidebar{
+    display: none;
+  }
+
+
+  .story_base {
+    padding: 10px 15px;
+    margin: 5px 10px 5px;
+    .cover_image img {
+      z-index: 100;
+      width: 100%;
+    }
+  }
+
+  .draft_base {
+    padding: 10px 15px;
+    margin: 0px 2px 5px;
+    .table {
+      font-size: 12px;
+      line-height: 1;
+      padding-left: 5px;
+    }
+    .space {
+      margin: 6px 0;
+    }
   }
 }
