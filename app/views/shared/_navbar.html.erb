@@ -15,7 +15,9 @@
             <%= link_to "Write a story", new_story_path %></li>
         </li>
         <li>
+          <%= link_to conversations_path(current_user) do %>
             <i class="fa fa-envelope-o fa-lg navlogo"></i>Messages
+          <% end %>
         </li>
 
         <% if(!user_signed_in?) %>

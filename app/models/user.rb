@@ -24,4 +24,8 @@ def self.from_omniauth(auth)
      end
    end
  end
+
+ def own_story
+     Story.where("user_id = :user_id", user_id: id)
+ end
 end

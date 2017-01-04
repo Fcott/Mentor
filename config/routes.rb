@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
 
   root to: "pages#home"
 
@@ -12,5 +11,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :stories
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
 
 end
