@@ -31,7 +31,7 @@ body {
 }
 
 .container {
-	width: 80%;
+	width: 90%;
 }
 
 // Form
@@ -234,13 +234,29 @@ body {
 }
 
 // For mobile
-@media (max-width: 767px){
+@media (max-width: 1350px) {
+  .sidebar{
+    display: none;
+  }
+  .col-md-8 {
+    width: 100%;
+  }
+  .stories {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .col-md-offset-2 {
+    margin-left: 0%;
+ }
+}
+@media (max-width: 830px){
   .pic-middle {
     width: 32px;
   }
   .container {
-  	width: 100%;
+    width: 100%;
   }
+
   .col-sm-12 {
     padding-left: 0;
     padding-right: 0;
@@ -285,13 +301,7 @@ body {
       }
     }
   }
-  .stories {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .sidebar{
-    display: none;
-  }
+
 
 
   .story_base {

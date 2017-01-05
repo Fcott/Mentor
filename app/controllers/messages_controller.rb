@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   def index
     if current_user == @conversation.sender || @conversation.recipient
       @other = current_user == @conversation.sender ? @conversation.recipient : @conversation.sender
-      @messages = @conversation.messages.order("created_at DESC")
+      @messages = @conversation.messages.for_display
     else
       redirect_to conversations_path, alart: "You don't have permission to accsess"
     end
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
-    @messages = @conversation.messages.order("created_at DESC")
+    @messages = @conversation.messages.for_display
 
     if @message.save
       respond_to do |format|
