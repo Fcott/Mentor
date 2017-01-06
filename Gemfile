@@ -33,6 +33,7 @@ gem "refile-s3", '~> 0.2.0'
 gem 'fog'
 gem 'sendgrid-ruby'
 gem 'seed-fu', '~> 2.3'
+gem 'redis'
 
 
 group :development, :test do
