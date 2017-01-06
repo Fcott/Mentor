@@ -31,6 +31,6 @@ class MessagesController < ApplicationController
   end
 
   def render_message(message)
-    render(partial: 'message', locals: { message: message })
+    render(partial: 'message', locals: { message: message, conversation: @conversation })
   end
 end
