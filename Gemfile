@@ -32,6 +32,7 @@ gem "refile-mini_magick"
 gem "refile-s3", '~> 0.2.0'
 gem 'fog'
 gem 'sendgrid-ruby'
+gem 'seed-fu', '~> 2.3'
 
 
 group :development, :test do

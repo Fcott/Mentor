@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   root to: "pages#home"
-
-
+  
   devise_for :users,
              :path => '',
              :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
@@ -15,5 +14,7 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
   end
+
+  mount ActionCable.server, at: '/cable'
 
 end

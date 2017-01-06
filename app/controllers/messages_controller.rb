@@ -16,10 +16,8 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages.for_display
 
     if @message.save
-      respond_to do |format|
-        format.js
-        # format.json { render json: @resource }
-        end
+      ActionCable.server.broadcast 'room_channel',
+                                      message: render_message(@message)
     end
   end
 
@@ -30,5 +28,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:content, :user_id)
+  end
+
+  def render_message(message)
+    render(partial: 'message', locals: { message: message })
   end
 end

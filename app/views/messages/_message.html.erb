@@ -1,7 +1,9 @@
 <div class="panel">
   <div class="panel-body">
-    <%= image_tag user_picture(message.user), class: "img-circle pic-middle" %>
-    <strong><%= message.user.username %></strong>
+    <%= link_to user_path(message.user) do %>
+      <%= image_tag user_picture(message.user), class: "img-circle pic-middle" %>
+      <strong><%= message.user.username %></strong>
+    <% end %>
 
     <span class="pull-right"><%= message.sent_time %></span>
     <br>
