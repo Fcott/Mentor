@@ -2,12 +2,12 @@
   <div class="panel-body">
     <%= link_to user_path(message.user) do %>
       <%= image_tag user_picture(message.user), class: "img-circle pic-middle" %>
-      <strong><%= message.user.username %></strong>
+      <strong class="message_username"><%= message.user.username %></strong>
     <% end %>
 
     <span class="pull-right"><%= message.sent_time %></span>
     <br>
-    <div class="row-space-2">
+    <div class="message_content">
       <%= message.content %>
     </div>
   </div>
