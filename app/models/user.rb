@@ -7,9 +7,11 @@ class User < ApplicationRecord
 
 validates :username, presence: true, length: {maximum: 50}
 has_many :stories, dependent: :destroy
+has_many :saves
+has_many :saved_stories, through: :saves, source: :story
 
 
-def self.from_omniauth(auth)
+  def self.from_omniauth(auth)
    user = User.where(:email => auth.info.email).first
    if user
      return user
@@ -23,6 +25,18 @@ def self.from_omniauth(auth)
        user.password = Devise.friendly_token[0,20]
      end
    end
- end
- 
+  end
+
+  def saved_story?(story)
+   saves.find_by(story_id: story.id)
+  end
+
+  def save_story!(story)
+    saves.create!(story_id: story.id)
+  end
+
+  def unsaved!(story)
+   saves.find_by(story_id: story.id).destroy
+  end
+
 end
