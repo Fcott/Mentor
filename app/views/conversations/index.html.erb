@@ -1,33 +1,34 @@
 <div class="row">
-  <div class="col-md-12 col-sm-12">
 
+  <div class="col-md-10 col-md-offset-1 col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         Your Conversations
       </div>
       <div class="panel-body">
-        <div class="container">
+        <div class="panel">
+          <div class="panel-body">
           <% @conversations.each do |conversation| %>
             <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
 
-            <%= link_to conversation_messages_path(conversation) do %>
-              <div class="row conversation">
-                <div class="col-md-2">
-                  <%= image_tag user_picture(other), class: "img-circle pic-middle" %>
+              <%= link_to conversation_messages_path(conversation) do %>
+                <div class="conversation table_cell">
+                  <div class="avatar inline-block">
+                    <%= image_tag user_picture(other), class: "img-circle pic-middle" %>
+                  </div>
+                  <div class="message_info inline-block">
+                    <span class="username"><%= other.username %></span>
+                    <span class="timestamp "><%= conversation.messages.last.sent_time %></span>
+                    <div class="content">
+                      <%= conversation.messages.last.content %>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-2">
-                  <span class="margin_right15"><%= other.username %></span>
-                  <%= conversation.messages.last.sent_time %>
-                </div>
-                <div class="col-md-8">
-                  <%= conversation.messages.last.content %>
-                </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>

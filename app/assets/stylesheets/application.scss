@@ -38,8 +38,17 @@ body {
   margin-right: 15px;
 }
 
+.margin_left15 {
+  margin-left: 15px;
+}
+
+
 .inline-block {
   display: inline-block;
+}
+.table_cell {
+  display: table-cell;
+
 }
 
 // Form
@@ -102,19 +111,11 @@ body {
 .user_top {
   margin: 30px 10px;
 }
-
 .user_name {
   font-size: 24px;
-
+  padding-left: 15px;
 }
 
-.avatar {
-
-}
-
-.contact_button {
-
-}
 
 .head_lists {
     font-size: 16px;
@@ -255,14 +256,63 @@ body {
   }
 }
 
+// conversation
+
+.conversation{
+  margin: 12px 0;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 1.4;
+  text-rendering: auto;
+  word-wrap: break-word;
+
+  .avatar {
+
+  }
+  .message_info{
+    padding: 0 15px;
+    .username {
+      font-weight: bold;
+    }
+    .timestamp {
+      font-size: 0.8em;
+      color: rgba(0,0,0,.44);
+    }
+    .content {
+      max-width: inherit;
+      display: block;
+      word-wrap: break-word;
+    }
+  }
+}
+
 // message
-.message_username {
-  margin-left: 10px;
+.message_base {
+  margin: 12px 0;
+  vertical-align: middle;
+  font-size: 14px;
+  text-rendering: auto;
+  word-wrap: break-word;
+  .avatar {
+
+  }
+  .message_info {
+    padding: 0 15px;
+    .message_username {
+      font-weight: bold;
+    }
+    .timestamp {
+      font-size: 0.8em;
+      color: rgba(0,0,0,.44);
+    }
+    .message_content {
+      max-width: inherit;
+      display: block;
+      word-wrap: break-word;
+    }
+  }
 }
-.message_content {
-  margin-top: 10px;
-  margin-left: 10px;
-}
+
 
 // For mobile
 @media (max-width: 1350px) {
@@ -362,6 +412,30 @@ body {
     }
     .space {
       margin: 6px 0;
+    }
+  }
+
+  .panel {
+    margin-bottom: 5px;
+  }
+  .panel-heading {
+    padding: 5px 10px;
+  }
+  .panel-body {
+    padding: 4px;
+  }
+
+  .conversation {
+    .avatar {
+      vertical-align: top;
+    }
+  }
+  .message_base {
+    .avatar {
+      vertical-align: top;
+    }
+    .message_info {
+
     }
   }
 }
