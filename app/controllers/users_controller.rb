@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @own_stories = Story.where("user_id = ?", @user)
+    @own_stories = @user.stories
   end
 
   def editing_stories

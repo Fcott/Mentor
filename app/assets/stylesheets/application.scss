@@ -201,16 +201,14 @@ body {
   .content {
 
   }
+  .bottom_actions{
+    margin: 10px 20px;
+    
+  }
 }
 
 // Story Show
 .story_base {
-  .cover_image img{
-    text-align: center;
-    img {
-      max-height: 400px;
-    }
-  }
   .content {
     padding: 20px 30px;
     word-wrap: break-word;

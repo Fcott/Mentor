@@ -25,13 +25,22 @@
           <%= image_tag attachment_url(story, :cover_image) %>
         </div>
       <% end %>
-      <% if current_user == story.user %>
-        <span class="edit">
-          <%= link_to "edit", edit_story_path(story) %>
-        </span class="delete">
-        <span>
-          <%= link_to "delete", story, method: :delete, data: {confirm: "You sure?"} %>
-        </span>
-      <% end %>
+      <div class="bottom_actions">
+        <% if current_user == story.user %>
+          <span class="edit">
+            <%= link_to "edit", edit_story_path(story) %>
+          </span class="delete">
+          <span>
+            <%= link_to "delete", story, method: :delete, data: {confirm: "You sure?"} %>
+          </span>
+        <% end %>
+
+        <% if false %>
+          <span class="pull-right"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+        <% else %>
+          <span class="pull-right"><i class="fa fa-bookmark-o" aria-hidden="true"></i></span>
+        <% end %>
+
+      </div>
     </div>
   </li>
