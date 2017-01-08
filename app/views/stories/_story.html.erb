@@ -25,6 +25,7 @@
           <%= image_tag attachment_url(story, :cover_image) %>
         </div>
       <% end %>
+
       <div class="bottom_actions">
         <% if current_user == story.user %>
           <span class="edit">
@@ -35,11 +36,7 @@
           </span>
         <% end %>
 
-        <% if false %>
-          <span class="pull-right"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
-        <% else %>
-          <span class="pull-right"><i class="fa fa-bookmark-o" aria-hidden="true"></i></span>
-        <% end %>
+        <%= render 'saves/save_btn', story: story %>
 
       </div>
     </div>

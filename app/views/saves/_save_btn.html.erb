@@ -1,0 +1,9 @@
+<% if current_user.saved?(story) %>
+  <%= link_to safe_path(current_user.saves.find_by(story_id: story.id)), remote: true, method: :delete do %>
+    <span class="pull-right"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+  <% end %>
+<% else %>
+  <%= link_to saves_path(story_id: story.id), remote: true, method: :post do %>
+    <span class="pull-right"><i class="fa fa-bookmark-o" aria-hidden="true"></i></span>
+  <% end %>
+<% end %>

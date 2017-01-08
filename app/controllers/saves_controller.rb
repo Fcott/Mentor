@@ -2,12 +2,12 @@ class SavesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @story = Story.find(params[:id])
-    current_user.save_story!(@story)
+    @story = Story.find(params[:story_id])
+    current_user.save!(@story)
   end
 
   def destroy
     @story = Save.find(params[:id]).story
-    current_user.unsaved!(@story)
+    current_user.unsave!(@story)
   end
 end

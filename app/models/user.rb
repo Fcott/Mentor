@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 validates :username, presence: true, length: {maximum: 50}
 has_many :stories, dependent: :destroy
-has_many :saves, dependent: :destroy
+has_many :saves, class_name: Save
 has_many :saved_stories, through: :saves, source: :story
 
 
@@ -26,8 +26,8 @@ has_many :saved_stories, through: :saves, source: :story
      end
    end
   end
-  
-  def save?(story)
+
+  def saved?(story)
     saves.find_by(story_id: story.id)
   end
 

@@ -6,6 +6,6 @@ class Story < ApplicationRecord
   attachment :cover_image
 
   belongs_to :user
-  has_many :saves, dependent: :destroy
+  has_many :saves, class_name: Save
   has_many :saved_users, through: :saves, source: :user
 end
