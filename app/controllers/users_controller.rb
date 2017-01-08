@@ -11,4 +11,5 @@ class UsersController < ApplicationController
   def saved_stories
     @user = User.find(params[:user_id])
     @saved_stories = @user.saved_stories
+  end
 end
