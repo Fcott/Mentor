@@ -27,17 +27,19 @@
       <% end %>
 
       <div class="bottom_actions">
-        <% if current_user == story.user %>
-          <span class="edit">
-            <%= link_to "edit", edit_story_path(story) %>
-          </span class="delete">
-          <span>
-            <%= link_to "delete", story, method: :delete, data: {confirm: "You sure?"} %>
-          </span>
-        <% end %>
-
-        <%= render 'saves/save_btn', story: story %>
-
+        <div class="inline-block">
+          <% if current_user == story.user %>
+            <span class="edit">
+              <%= link_to "edit", edit_story_path(story) %>
+            </span class="delete">
+            <span>
+              <%= link_to "delete", story, method: :delete, data: {confirm: "You sure?"} %>
+            </span>
+          <% end %>
+        </div>
+        <div class="inline-block pull-right">
+          <%= render 'saves/save_btn', story: story %>
+        </div>
       </div>
     </div>
   </li>
