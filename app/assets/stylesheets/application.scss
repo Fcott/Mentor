@@ -41,7 +41,9 @@ body {
 .margin_left15 {
   margin-left: 15px;
 }
-
+.center {
+  text-align: center;
+}
 
 .inline-block {
   display: inline-block;
@@ -298,7 +300,7 @@ body {
   }
   .message_info {
     padding: 0 15px;
-    .message_username {
+    .username {
       font-weight: bold;
     }
     .timestamp {
@@ -433,9 +435,6 @@ body {
   .message_base {
     .avatar {
       vertical-align: top;
-    }
-    .message_info {
-
     }
   }
 }
