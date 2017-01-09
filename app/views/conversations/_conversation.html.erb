@@ -1,0 +1,16 @@
+
+<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
+  <%= link_to conversation_messages_path(conversation) do %>
+    <div class="conversation table_cell">
+      <div class="avatar inline-block">
+        <%= image_tag user_picture(other), class: "img-circle pic-middle" %>
+      </div>
+      <div class="message_info inline-block">
+        <span class="username"><%= other.username %></span>
+        <span class="timestamp "><%= conversation.messages.last.sent_time %></span>
+        <div class="content">
+          <%= conversation.messages.last.content %>
+        </div>
+      </div>
+    </div>
+  <% end %>

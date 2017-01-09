@@ -37,9 +37,11 @@
             </span>
           <% end %>
         </div>
-        <div class="inline-block pull-right">
-          <%= render 'saves/save_btn', story: story %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="inline-block pull-right">
+            <%= render 'saves/save_btn', story: story %>
+          </div>
+        <% end %>
       </div>
     </div>
   </li>
