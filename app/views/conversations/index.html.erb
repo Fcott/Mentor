@@ -8,7 +8,9 @@
       <div class="panel-body">
         <div class="panel">
           <div class="panel-body">
-            <%= render @conversations %>
+            <% if @conversations.any? %>
+              <%= render @conversations %>
+            <% end %>
           </div>
         </div>
       </div>
