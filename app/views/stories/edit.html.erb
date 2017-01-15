@@ -31,10 +31,13 @@
             <%= f.label :content %><br />
             <%= f.text_area :content, placeholder: "Write your story..", class: "draft width100" %>
           </div>
-          <!-- <span class="picture">
-            <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-          </span> -->
-          <%= f.submit "Update", class: "btn btn-primary" %>
+          <% if @story.draft %>
+            <%= f.submit "Post", name: "publish", class: "btn btn-primary" %>
+            <%= f.submit "Keep as draft", name: "draft", class: "btn btn-info" %>
+          <% else %>
+            <%= f.submit "Update", name: "publish", class: "btn btn-primary" %>
+            <%= f.submit "Change to draft", name: "draft", class: "btn btn-info" %>        
+          <% end %>
         <% end %>
       </div>
     </div>

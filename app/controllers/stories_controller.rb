@@ -1,9 +1,12 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:destroy]
 
   def show
-    @story = Story.find(params[:id]) 
+    @story = Story.find(params[:id])
+    if @story.draft && current_user != @story.user
+      redirect_to root_url
+    end
   end
 
   def new
@@ -12,14 +15,15 @@ class StoriesController < ApplicationController
 
   def create
     @story = current_user.stories.build(story_params)
+
     respond_to do |format|
       if @story.save
         if params[:draft]
-          @story.draft
+          @story.as_draft
           flash[:success] = "Saved as draft"
         elsif params[:publish]
           @story.publish
-          flash[:success] = "Successfully created"
+          flash[:success] = "Successfully posted"
         end
         format.html { redirect_to root_url }
       else
@@ -35,6 +39,13 @@ class StoriesController < ApplicationController
   def update
     @story = Story.find(params[:id])
     if @story.update(story_params)
+      if params[:draft]
+        @story.as_draft
+        flash[:success] = "Kept as draft"
+      elsif params[:publish]
+        @story.publish
+        flash[:success] = "Successfully Updated"
+      end
       flash[:success] = "Successfully updated"
       redirect_to story_path(@story)
     else

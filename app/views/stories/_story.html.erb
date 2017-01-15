@@ -12,7 +12,11 @@
             <%= link_to story.user.username, story.user %>
           </span>
           <div class="timestamp">
-            Posted <%= time_ago_in_words(story.created_at) %> ago.
+            <% if story.draft %>
+              draft
+            <% else %>
+              Posted <%= time_ago_in_words(story.published_at) %> ago.
+            <% end %>
           </div>
         </div>
       </div>
