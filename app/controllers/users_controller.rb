@@ -4,12 +4,12 @@ class UsersController < ApplicationController
     @own_stories = @user.stories.published
   end
 
-  def editing_stories
+  def drafts
     @user = User.find(params[:user_id])
     @drafts = @user.stories.drafts
   end
 
-  def saved_stories
+  def saved
     @user = User.find(params[:user_id])
     @saved_stories = @user.saved_stories
   end
