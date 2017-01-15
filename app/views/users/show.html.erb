@@ -15,8 +15,8 @@
   <% if current_user == @user %>
     <ul class="head_lists">
       <li><%= link_to "Your Stories", user_path(@user), class: "active" %></li>
-      <li><%= link_to "Editing Stories", user_editing_stories_path(@user), class: "" %></li>
-      <li><%= link_to "Saved Stories", user_saved_stories_path(@user), class: "" %></li>
+      <li><%= link_to "Drafts", user_editing_stories_path(@user), class: "" %></li>
+      <li><%= link_to "Saved", user_saved_stories_path(@user), class: "" %></li>
     </ul>
 
     <ul class="stories">

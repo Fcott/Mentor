@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @stories = Story.all
+    @stories = Story.published
   end
 end

@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def show
-    @story = Story.find(params[:id])
+    @story = Story.find(params[:id]) 
   end
 
   def new
@@ -12,12 +12,19 @@ class StoriesController < ApplicationController
 
   def create
     @story = current_user.stories.build(story_params)
-    if @story.save
-      flash[:success] = "Successfully created"
-      redirect_to root_url
-    else
-      # @feed_items = []
-      render 'new'
+    respond_to do |format|
+      if @story.save
+        if params[:draft]
+          @story.draft
+          flash[:success] = "Saved as draft"
+        elsif params[:publish]
+          @story.publish
+          flash[:success] = "Successfully created"
+        end
+        format.html { redirect_to root_url }
+      else
+        format.html { render action: "new" }
+      end
     end
   end
 
