@@ -22,6 +22,10 @@
     <ul class="stories">
       <% if @drafts.any? %>
         <%= render @drafts %>
+      <% else %>
+        <br>
+        <br>
+        <p class="center">There are no your drafts.</p>
       <% end %>
     </ul>
 

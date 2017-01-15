@@ -22,6 +22,10 @@
     <ul class="stories">
       <% if @saved_stories.any? %>
         <%= render @saved_stories  %>
+      <% else %>
+        <br>
+        <br>
+        <p class="center">There are no your saves.</p>
       <% end %>
     </ul>
 

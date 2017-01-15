@@ -22,6 +22,10 @@
     <ul class="stories">
       <% if @own_stories.any? %>
         <%= render @own_stories %>
+      <% else %>
+        <br>
+        <br>
+        <p class="center">There are no your stories.</p>
       <% end %>
     </ul>
 
