@@ -5,6 +5,7 @@ class Story < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   scope :drafts, -> { where(draft: true)  }
   scope :published, -> { where(draft: false).reorder(published_at: :desc)  }
+  scope :saved_order, -> { reorder(saved_at: :desc)  }
   attachment :cover_image
 
   belongs_to :user
@@ -17,5 +18,13 @@ class Story < ApplicationRecord
 
   def publish
     update_attributes!(draft: false, published_at: Time.now)
+  end
+
+  def saved
+    update_attributes!(saved_at: Time.now)
+  end
+
+  def unsaved
+    update_attributes!(saved_at: nil)
   end
 end
