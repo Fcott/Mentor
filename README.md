@@ -1,24 +1,10 @@
-# README
+# Mentor（作成中）
+<https://mentor37211.herokuapp.com/>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+人が能力を伸ばすためには、その道の先にいる人（メンター）と関わることがとても重要であると私は思います。
+そこで、誰でも気軽にメンターを探せる、メンターになれる場を作りたいと考えました。
+メンターを探したい人が、相手のブログ（Story）を読んだ上で連絡をとれる事が基本的な考え方です
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ポイント
+- OB訪問サイト等では経歴から人を判断することが多く、一回限りの訪問となることが多い。Mentorでは、相手の考えを文章から得た上で、繋がることができる。
+- FBや一般的なブログサービスとは異なり、ユーザーはメンターを探している人に向けて文章を書き、連絡が来ることを前提に使っている。
