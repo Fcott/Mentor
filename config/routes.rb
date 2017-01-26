@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
 
   resources :saves, only: [:create, :destroy]
-
-
+  resources :job_categories, only: [:show]
 
 end

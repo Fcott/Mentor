@@ -7,7 +7,7 @@ class JobCategory < ApplicationRecord
   has_many :user_jobs
   has_many :users, through: :user_jobs
 
-  before_save :to_be_unique_name
+  before_save :to_be_unique_category
 
   def to_be_unique_category
     self.name.strip
