@@ -315,6 +315,20 @@ body {
   }
 }
 
+// job_category show
+.job_category {
+  border-bottom: 1px solid rgba(0,0,0,.05)!important;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.subcategories {
+  font-size: 1.2em;
+  margin-right: 20px;
+  &:last-child {
+    margin-right: 0px;
+  }
+}
+
 
 // For mobile
 @media (max-width: 1350px) {

@@ -1,1 +1,22 @@
-<h3><%= @job_category.name %></h3>
+<div class="row">
+  <div class="col-md-12">
+    <div class="job_category">
+      <h3><%= @job_category.name %></h3>
+      <% if @subcategories %>
+        <% @subcategories.each do |sub| %>
+          <span class="subcategories"><%= sub.name %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-8">
+    <% if @job_stories.any? %>
+      <ul class="stories">
+        <%= render @job_stories %>
+      </ul>
+    <% end %>
+  </div>
+    <div class="col-md-4 sidebar">
+      <h3>Sidebar</h3>
+    </div>
+</div>
