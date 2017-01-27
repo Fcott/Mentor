@@ -24,7 +24,9 @@
           <%= @story.title %>
         </div>
         <div class="cover_image">
-          <%= image_tag attachment_url(@story, :cover_image) %>
+          <% if @story.cover_image %>
+           <%= image_tag attachment_url(@story, :cover_image) %>
+          <% end %>
         </div>
 
         <div class="content">
