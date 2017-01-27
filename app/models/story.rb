@@ -4,7 +4,8 @@ class Story < ApplicationRecord
   validates :content, presence: true
   default_scope -> { order(created_at: :desc) }
   scope :drafts, -> { where(draft: true)  }
-  scope :published, -> { where(draft: false).reorder(published_at: :desc)  }
+  scope :published, -> { where(draft: false) }
+  scope :order_by_published, -> { reorder(published_at: :desc)  }
   scope :saved_order, -> { reorder(saved_at: :desc)  }
   attachment :cover_image
 
