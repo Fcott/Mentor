@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @drafts = @user.stories.drafts
   end
 
-  def saved
+  def saving
     @user = User.find(params[:user_id])
     @saved_stories = @user.saved_stories
   end

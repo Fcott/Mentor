@@ -9,8 +9,8 @@ class Story < ApplicationRecord
   attachment :cover_image
 
   belongs_to :user
-  has_many :saves, class_name: Save
-  has_many :saved_users, through: :saves, source: :user
+  has_many :savings
+  has_many :saved_users, through: :savings, source: :user
 
   def as_draft
     update_attributes!(draft: true)

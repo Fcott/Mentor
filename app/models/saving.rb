@@ -1,4 +1,4 @@
-class Save < ApplicationRecord
+class Saving < ApplicationRecord
   belongs_to :user
   belongs_to :story
   validates :user, presence: true

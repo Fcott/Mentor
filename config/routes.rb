@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     get '/drafts' => 'users#drafts'
-    get '/saved' => 'users#saved'
+    get '/saving' => 'users#saving'
   end
 
   resources :stories
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   mount ActionCable.server, at: '/cable'
 
-  resources :saves, only: [:create, :destroy]
+  resources :savings, only: [:create, :destroy]
   resources :job_categories, only: [:show]
 
 end

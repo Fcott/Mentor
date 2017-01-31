@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131115846) do
+ActiveRecord::Schema.define(version: 20170131125658) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -37,14 +37,14 @@ ActiveRecord::Schema.define(version: 20170131115846) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "saves", force: :cascade do |t|
+  create_table "savings", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "story_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["story_id"], name: "index_saves_on_story_id"
-    t.index ["user_id", "story_id"], name: "index_saves_on_user_id_and_story_id", unique: true
-    t.index ["user_id"], name: "index_saves_on_user_id"
+    t.index ["story_id"], name: "index_savings_on_story_id"
+    t.index ["user_id", "story_id"], name: "index_savings_on_user_id_and_story_id", unique: true
+    t.index ["user_id"], name: "index_savings_on_user_id"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20170131115846) do
     t.index ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
     t.index ["user_id", "published_at"], name: "index_stories_on_user_id_and_published_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
-    t.index ["user_id"], name: "index_stories_on_user_id_and_saved_at"
   end
 
   create_table "user_jobs", force: :cascade do |t|
