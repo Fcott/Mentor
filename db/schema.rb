@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126125535) do
+ActiveRecord::Schema.define(version: 20170131115846) do
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -56,11 +56,10 @@ ActiveRecord::Schema.define(version: 20170126125535) do
     t.datetime "updated_at",                    null: false
     t.boolean  "draft",          default: true
     t.datetime "published_at"
-    t.datetime "saved_at"
     t.index ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
     t.index ["user_id", "published_at"], name: "index_stories_on_user_id_and_published_at"
-    t.index ["user_id", "saved_at"], name: "index_stories_on_user_id_and_saved_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
+    t.index ["user_id"], name: "index_stories_on_user_id_and_saved_at"
   end
 
   create_table "user_jobs", force: :cascade do |t|

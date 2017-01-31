@@ -11,6 +11,6 @@ class UsersController < ApplicationController
 
   def saved
     @user = User.find(params[:user_id])
-    @saved_stories = @user.saved_stories.saved_order
+    @saved_stories = @user.saved_stories
   end
 end

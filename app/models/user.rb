@@ -8,7 +8,7 @@ class User < ApplicationRecord
 validates :username, presence: true, length: {maximum: 50}
 validates :username, uniqueness: { case_sensitive: false }
 has_many :stories, dependent: :destroy
-has_many :saves, class_name: Save
+has_many :saves, -> { order(created_at: :desc) }, class_name: Save
 has_many :saved_stories, through: :saves, source: :story
 has_many :user_jobs
 has_many :job_categories, through: :user_jobs
