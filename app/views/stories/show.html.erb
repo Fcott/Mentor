@@ -41,6 +41,12 @@
             <%= link_to "delete", @story, method: :delete, data: {confirm: "You sure?"} %>
           </span>
         <% end %>
+
+        <% if user_signed_in? %>
+          <div class="saving_btn<%= @story.id %> inline-block pull-right">
+            <%= render 'savings/saving_btn', story: @story %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

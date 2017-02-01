@@ -44,7 +44,7 @@
           <% end %>
         </div>
         <% if user_signed_in? %>
-          <div class="inline-block pull-right">
+          <div class="saving_btn<%= story.id %> inline-block pull-right">
             <%= render 'savings/saving_btn', story: story %>
           </div>
         <% end %>
