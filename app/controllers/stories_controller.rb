@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
     @story = Story.find(params[:id])
@@ -69,7 +69,7 @@ class StoriesController < ApplicationController
   end
 
   def correct_user
-    @story = current_user.stories.find_by(id: params[:id])
-    redirect_to root_url if @story.nil?
+    @story = Story.find(params[:id])
+    redirect_to root_url unless @story.user == current_user
   end
 end
