@@ -9,8 +9,9 @@ Rails.application.routes.draw do
                                :registrations => 'registrations'}
 
   resources :users, only: [:show] do
-    get '/drafts' => 'users#drafts'
-    get '/saving' => 'users#saving'
+    get '/drafts'  => 'users#drafts'
+    get '/saving'  => 'users#saving'
+    get '/profile' => 'users#profile'
   end
 
   resources :stories
