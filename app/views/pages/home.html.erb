@@ -2,8 +2,8 @@
   <div class="col-md-12">
     <ul class="head_lines">
       <li>For you</li>
-      <% if @jobs_3 %>
-        <% @jobs_3.each do |job| %>
+      <% if @jobs_lists %>
+        <% @jobs_lists.each do |job| %>
           <%= link_to job_category_path(job) do %>
             <li><%= job.name %></li>
           <% end %>
