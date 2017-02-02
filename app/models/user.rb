@@ -45,30 +45,6 @@ after_create :create_profile
     savings.find_by(story_id: story.id).destroy
   end
 
-# access to profile
-  def self_introduction
-    profile.self_introduction
-  end
-
-  def interest
-    profile.interest
-  end
-
-  def education
-    profile.education
-  end
-
-  def work_experience
-    profile.work_experience
-  end
-
-  def languages
-    profile.languages
-  end
-
-  def others
-    profile.others
-  end
 
   private
   def create_profile

@@ -23,6 +23,12 @@ class UsersController < ApplicationController
   def profile
     @user = User.find(params[:user_id])
     @profile = @user.profile
+    @self_introduction = @profile.self_introduction
+    @interest = @profile.interest
+    @education = @profile.education
+    @work_experience = @profile.work_experience
+    @languages = @profile.languages
+    @others = @profile.others
   end
 
   private
