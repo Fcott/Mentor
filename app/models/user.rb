@@ -12,6 +12,7 @@ has_many :savings, -> { order(created_at: :desc) }
 has_many :saved_stories, through: :savings, source: :story
 has_many :user_jobs
 has_many :job_categories, through: :user_jobs
+has_one :profile
 
 
   def self.from_omniauth(auth)

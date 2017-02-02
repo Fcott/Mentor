@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'profiles/edit'
+
+  get 'profiles/update'
+
   root to: "pages#home"
 
   devise_for :users,
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
     get '/drafts'  => 'users#drafts'
     get '/saving'  => 'users#saving'
     get '/profile' => 'users#profile'
+    resources :profiles, only: [:edit, :update]
   end
 
   resources :stories

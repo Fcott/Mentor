@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  job_category: 
+  self_introduction: MyText
+  interest: MyText
+  education: MyText
+  work_experience: MyText
+  languages: MyText
+  others: MyText
+
+two:
+  user: 
+  job_category: 
+  self_introduction: MyText
+  interest: MyText
+  education: MyText
+  work_experience: MyText
+  languages: MyText
+  others: MyText
