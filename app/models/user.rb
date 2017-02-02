@@ -8,11 +8,11 @@ class User < ApplicationRecord
 validates :username, presence: true, length: {maximum: 50}
 validates :username, uniqueness: { case_sensitive: false }
 has_many :stories, dependent: :destroy
-has_many :savings, -> { order(created_at: :desc) }
+has_many :savings, -> { order(created_at: :desc) }, dependent: :destroy
 has_many :saved_stories, through: :savings, source: :story
 has_many :user_jobs
 has_many :job_categories, through: :user_jobs
-has_one :profile
+has_one :profile, dependent: :destroy
 
 after_create :create_profile
 

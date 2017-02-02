@@ -5,10 +5,16 @@
         <%= image_tag user_picture(@user), class: "img-circle pic-middle" %>
         <strong class="user_name"><%= @user.username%></strong>
       </div>
-      <% unless current_user == @user %>
-        <div class="contact_button pull-right inline-block">
-          <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary" %>
-        </div>
+      <% if user_signed_in? %>
+        <% if current_user == @user %>
+          <div class="contact_button pull-right inline-block">
+            <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-info" %>
+          </div>
+        <% else %>
+          <div class="contact_button pull-right inline-block">
+            <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
@@ -27,5 +33,28 @@
   </ul>
 
   <% end %>
+
+  <br>
+  <div class="user_profile">
+    <h4>Self Introduction</h4>
+    <%= @user.self_introduction %>
+    <br>
+
+    <h4>Work Experiences</h4>
+    <%= @user.work_experience %>
+    <br>
+
+    <h4>Education</h4>
+    <%= @user.education %>
+    <br>
+
+    <h4>Languages</h4>
+    <%= @user.languages %>
+    <br>
+
+    <h4>Others</h4>
+    <%= @user.others %>
+    <br>
+  </div>
 
   </div>

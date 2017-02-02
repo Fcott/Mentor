@@ -1,24 +1,28 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:drafts, :saving]
-  before_action :correct_user, only: [:drafts, :saving] 
+  before_action :correct_user, only: [:drafts, :saving]
 
   def show
     @user = User.find(params[:id])
     @own_stories = @user.stories.published
+    @profile = @user.profile
   end
 
   def drafts
     @user = User.find(params[:user_id])
     @drafts = @user.stories.drafts
+    @profile = @user.profile
   end
 
   def saving
     @user = User.find(params[:user_id])
     @saved_stories = @user.saved_stories
+    @profile = @user.profile
   end
 
   def profile
     @user = User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   private

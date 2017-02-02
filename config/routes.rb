@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     get '/drafts'  => 'users#drafts'
     get '/saving'  => 'users#saving'
     get '/profile' => 'users#profile'
-    resources :profiles, only: [:edit, :update]
   end
+  resources :profiles, only: [:edit, :update]
 
   resources :stories
 
