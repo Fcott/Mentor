@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170202065458) do
     t.index ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
     t.index ["user_id", "published_at"], name: "index_stories_on_user_id_and_published_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
+    t.index ["user_id"], name: "index_stories_on_user_id_and_saved_at"
   end
 
   create_table "user_jobs", force: :cascade do |t|

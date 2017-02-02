@@ -14,6 +14,8 @@ has_many :user_jobs
 has_many :job_categories, through: :user_jobs
 has_one :profile
 
+after_create :create_profile
+
 
   def self.from_omniauth(auth)
    user = User.where(:email => auth.info.email).first
@@ -41,6 +43,36 @@ has_one :profile
 
   def unsaving!(story)
     savings.find_by(story_id: story.id).destroy
+  end
+
+# access to profile
+  def self_introduction
+    profile.self_introduction
+  end
+
+  def interest
+    profile.interest
+  end
+
+  def education
+    profile.education
+  end
+
+  def work_experience
+    profile.work_experience
+  end
+
+  def languages
+    profile.languages
+  end
+
+  def others
+    profile.others
+  end
+
+  private
+  def create_profile
+    Profile.create(user_id: self.id, self_introduction: "", interest: "",  education: "", work_experience: "",  languages: "",  others: "")
   end
 
 end
