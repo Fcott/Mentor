@@ -34,6 +34,10 @@ body {
 	width: 90%;
 }
 
+.margin_top5 {
+  margin-top: 5px;
+}
+
 .margin_right15 {
   margin-right: 15px;
 }
@@ -215,6 +219,35 @@ body {
     padding: 20px 30px;
     word-wrap: break-word;
   }
+}
+
+// user_profile
+.user_profile {
+  margin-top: 50px;
+}
+.profile_div{
+  margin-left: 5px;
+  margin-bottom: 50px;
+}
+.p_item{
+  max-width: 95%;
+  width: 95%;
+  display: block;
+  margin: 15px 0px 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Profile edit
+.editing_item {
+  width: 95%;
+  max-width: 95%;
+  min-height: 160px;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3px;
 }
 
 

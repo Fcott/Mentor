@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
+    @user = @profile.user
     if @profile.update(profile_params)
       redirect_to user_profile_path(@user)
     else

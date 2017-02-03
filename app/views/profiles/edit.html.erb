@@ -15,35 +15,44 @@
       <li><%= link_to "Profile", user_profile_path(@user), class: "active" %></li>
     </ul>
 
-    <div class="">
+    <div class="user_profile">
       <%= form_for(@profile) do |f| %>
         <%= render "shared/errors", object: f.object %>
-        <div class=" ">
-          <%= f.label :self_introduction %><br />
-          <%= f.text_area :self_introduction, class: "width100" %>
-        </div>
-        <div class=" ">
-          <%= f.label :interest %><br />
-          <%= f.text_area :interest, class: "width100" %>
-        </div>
-        <div class=" ">
-          <%= f.label :work_experience %><br />
-          <%= f.text_area :work_experience, class: "width100" %>
-        </div>
-        <div class=" ">
-          <%= f.label :education %><br />
-          <%= f.text_area :education, class: "width100" %>
-        </div>
-        <div class=" ">
-          <%= f.label :languages %><br />
-          <%= f.text_area :languages, class: "width100" %>
-        </div>
-        <div class=" ">
-          <%= f.label :others %><br />
-          <%= f.text_area :others, class: "width100" %>
+        <div class="profile_div">
+          <h4>Self Introduction</h4>
+          <%= f.text_area :self_introduction, class: "editing_item" %>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
         </div>
 
-          <%= f.submit "Update", class: "btn btn-primary" %>
+        <div class="profile_div">
+          <h4>Interest</h4>
+          <%= f.text_area :interest, class: "editing_item" %>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Work Experiences</h4>
+          <%= f.text_area :work_experience, class: "editing_item" %>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Education</h4>
+          <%= f.text_area :education, class: "editing_item" %>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Languages</h4>
+          <%= f.text_area :languages, class: "editing_item" %>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Others</h4>
+          <%= f.text_area :others, class: "editing_item" %>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
 
       <% end %>
     </div>
