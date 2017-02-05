@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'profiles/edit'
-
-  get 'profiles/update'
-
   root to: "pages#home"
 
   devise_for :users,
@@ -12,7 +8,7 @@ Rails.application.routes.draw do
              :controllers => { :omniauth_callbacks => "omniauth_callbacks",
                                :registrations => 'registrations'}
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     get '/drafts'  => 'users#drafts'
     get '/saving'  => 'users#saving'
     get '/profile' => 'users#profile'

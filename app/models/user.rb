@@ -10,9 +10,11 @@ validates :username, uniqueness: { case_sensitive: false }
 has_many :stories, dependent: :destroy
 has_many :savings, -> { order(created_at: :desc) }, dependent: :destroy
 has_many :saved_stories, through: :savings, source: :story
-has_many :user_jobs
+has_many :user_jobs, dependent: :destroy
 has_many :job_categories, through: :user_jobs
 has_one :profile, dependent: :destroy
+accepts_nested_attributes_for :profile
+accepts_nested_attributes_for :user_jobs, allow_destroy: true
 
 after_create :create_profile
 

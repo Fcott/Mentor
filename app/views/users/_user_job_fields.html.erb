@@ -1,0 +1,6 @@
+<div class="user_job_fields">
+  <%= f.collection_select(:job_category_id, JobCategory.all, :id, :name, prompt: true, selected: @user.user_jobs.map(&:id), multiple: true) %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.check_box :_destroy %>
+  <%= link_to_remove_association "remove", f %>
+</div>

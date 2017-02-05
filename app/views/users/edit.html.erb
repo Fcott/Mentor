@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12">
+    <div class="user_top">
+      <div class="avatar inline-block">
+        <%= image_tag user_picture(@user), class: "img-circle pic-middle" %>
+        <strong class="user_name"><%= @user.username%></strong>
+        <% if @job_categories %>
+          <div>
+            <% @job_categories.each do |j| %>
+              <%= j.name %>
+            <% end %>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+
+    <ul class="head_lists center">
+      <li><%= link_to "Your Stories", user_path(@user), class: "" %></li>
+      <li><%= link_to "Drafts", user_drafts_path(@user), class: "" %></li>
+      <li><%= link_to "Saved", user_saving_path(@user), class: "" %></li>
+      <li><%= link_to "Profile", user_profile_path(@user), class: "active" %></li>
+    </ul>
+
+    <div class="user_profile">
+    <%= form_for(@user, url: user_path, method: :patch) do |f| %>
+      <%= render "shared/errors", object: f.object %>
+
+        <div class="profile_div">
+          <h4>Job Category</h4>
+          <div id="user_jobs">
+            <%= f.fields_for :user_jobs, @user.user_jobs do |uj| %>
+              <%= render "user_job_fields", f: uj %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association 'add job', f, :user_jobs %>
+            </div>
+          </div>
+          <%= f.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <%= f.fields_for :profile do |pr| %>
+        <div class="profile_div">
+          <h4>Self Introduction</h4>
+          <%= pr.text_area :self_introduction, class: "editing_item" %>
+          <%= pr.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Interest</h4>
+          <%= pr.text_area :interest, class: "editing_item" %>
+          <%= pr.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Work Experiences</h4>
+          <%= pr.text_area :work_experience, class: "editing_item" %>
+          <%= pr.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Education</h4>
+          <%= pr.text_area :education, class: "editing_item" %>
+          <%= pr.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Languages</h4>
+          <%= pr.text_area :languages, class: "editing_item" %>
+          <%= pr.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+        <div class="profile_div">
+          <h4>Others</h4>
+          <%= pr.text_area :others, class: "editing_item" %>
+          <%= pr.submit "Update", class: "btn btn-primary pull-right margin_top5" %>
+        </div>
+
+      <% end %>
+    <% end %>
+    </div>
+
+
+  </div>
