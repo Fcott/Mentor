@@ -7,7 +7,7 @@
       </div>
         <div class="panel-body">
           <div class="messages_room">
-            <% if @messages.any? %>
+            <% unless @messages.blank? %>
               <%= render @messages, locals: {conversation: @conversation} %>
             <% end %>
           </div>

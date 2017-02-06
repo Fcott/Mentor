@@ -4,7 +4,7 @@
       <div class="avatar inline-block">
         <%= image_tag user_picture(@user), class: "img-circle pic-middle" %>
         <strong class="user_name"><%= @user.username%></strong>
-        <% if @job_categories %>
+        <% unless @job_categories.blank? %>
           <div>
             <% @job_categories.each do |j| %>
               <%= j.name %>
@@ -34,7 +34,7 @@
     </ul>
 
     <ul class="stories">
-      <% if @saved_stories.any? %>
+      <% unless @saved_stories.blank? %>
         <%= render @saved_stories  %>
       <% else %>
         <br>

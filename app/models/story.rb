@@ -6,6 +6,7 @@ class Story < ApplicationRecord
   scope :drafts, -> { where(draft: true)  }
   scope :published, -> { where(draft: false) }
   scope :order_by_published, -> { reorder(published_at: :desc)  }
+  scope :selected_users, -> (users){ where('user = ?', users) }
   attachment :cover_image
 
   belongs_to :user

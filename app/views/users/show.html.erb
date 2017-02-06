@@ -4,7 +4,7 @@
       <div class="avatar inline-block">
         <%= image_tag user_picture(@user), class: "img-circle pic-middle" %>
         <strong class="user_name"><%= @user.username%></strong>
-        <% if @job_categories %>
+        <% unless @job_categories.blank? %>
           <div>
             <% @job_categories.each do |j| %>
               <%= j.name %>
@@ -34,7 +34,7 @@
     </ul>
 
     <ul class="stories">
-      <% if @own_stories.any? %>
+      <% unless @own_stories.blank? %>
         <%= render @own_stories %>
       <% else %>
         <br>
@@ -49,9 +49,15 @@
     <li><%= link_to "Stories", user_path(@user), class: "active" %></li>
     <li><%= link_to "Profile", user_profile_path(@user), class: "" %></li>
   </ul>
-    <ul class="stories">
+  <ul class="stories">
+    <% unless @own_stories.blank? %>
       <%= render @own_stories %>
-    </ul>
+    <% else %>
+      <br>
+      <br>
+      <p class="center">There are no your stories.</p>
+    <% end %>
+  </ul>
   <% end %>
 
   </div>

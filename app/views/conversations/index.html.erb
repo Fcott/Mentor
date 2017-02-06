@@ -8,7 +8,7 @@
       <div class="panel-body">
         <div class="panel">
           <div class="panel-body">
-            <% if @conversations.any? %>
+            <% unless @conversations.blank? %>
               <%= render @conversations %>
             <% end %>
           </div>

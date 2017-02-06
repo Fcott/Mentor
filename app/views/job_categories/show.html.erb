@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="col-sm-12 col-md-8">
-    <% if @job_stories.any? %>
+    <% unless @job_stories.blank? %>
       <ul class="stories">
         <%= render @job_stories %>
       </ul>
