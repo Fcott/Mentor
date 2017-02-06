@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @profile = @user.profile
+    @job_categories = @user.job_categories
   end
 
   def update
@@ -59,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit( :id,
+    params.require(:user).permit(
     [user_jobs_attributes: [:id, :user_id, :job_category_id, :_destroy]],
     [profile_attributes: [:id, :self_introduction, :interest, :education, :work_experience, :languages, :others]]
     )

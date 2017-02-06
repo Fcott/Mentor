@@ -30,8 +30,8 @@
         <div class="profile_div">
           <h4>Job Category</h4>
           <div id="user_jobs">
-            <%= f.fields_for :user_jobs, @user.user_jobs do |uj| %>
-              <%= render "user_job_fields", f: uj %>
+            <%= f.fields_for :user_jobs do |user_job| %>
+              <%= render "user_job_fields", f: user_job %>
             <% end %>
             <div class="links">
               <%= link_to_add_association 'add job', f, :user_jobs %>

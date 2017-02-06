@@ -14,7 +14,7 @@ has_many :user_jobs, dependent: :destroy
 has_many :job_categories, through: :user_jobs
 has_one :profile, dependent: :destroy
 accepts_nested_attributes_for :profile
-accepts_nested_attributes_for :user_jobs, allow_destroy: true
+accepts_nested_attributes_for :user_jobs, allow_destroy: true, reject_if: ->(attrs) { attrs['job_category_id'].blank? || attrs['user_id'].blank? }
 
 after_create :create_profile
 
