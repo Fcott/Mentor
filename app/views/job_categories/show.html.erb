@@ -4,7 +4,11 @@
       <h3><%= @job_category.name %></h3>
       <% if @subcategories %>
         <% @subcategories.each do |sub| %>
-          <span class="subcategories"><%= sub.name %></span>
+          <span class="subcategories">
+            <%= link_to job_category_path(sub) do %>
+              <%= sub.name %>
+            <% end %>
+          </span>
         <% end %>
       <% end %>
     </div>
