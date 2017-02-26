@@ -4,27 +4,26 @@ class ConversationsController < ApplicationController
 
 
   def index
-    @conversations = Conversation.involving(current_user)
+    @conversations = current_user.conversations.have_messages.desc_order
   end
 
   def show
     @conversation = Conversation.find(params[:id])
-    @other = current_user == @conversation.sender ? @conversation.recipient : @conversation.sender
-    @messages = @conversation.messages.for_display
+    @the_other = @conversation.the_other_user_of(current_user)
+    @messages = @conversation.messages.recent_100
   end
 
   def create
-    @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first_or_create
+    recipient = User.find_by(id: params[:recipient_id])
+    users = [current_user, recipient]
+    @conversation = Conversation.conversations_for(users)
     redirect_to @conversation
   end
 
   private
-  def conversation_params
-    params.permit(:sender_id, :recipient_id)
-  end
 
   def correct_user
     @conversation = Conversation.find(params[:id])
-    redirect_to current_user unless current_user == @conversation.sender || @conversation.recipient
+    redirect_to current_user unless current_user.user_of?(@conversation)
   end
 end

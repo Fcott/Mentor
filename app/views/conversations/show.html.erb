@@ -3,7 +3,7 @@
   <div class="col-md-10 col-md-offset-1 col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Conversation with <%= @other.username %>
+        Conversation with <%= @the_other.username %>
       </div>
         <div class="panel-body">
           <div class="messages_room">
@@ -11,7 +11,10 @@
               <%= render @messages %>
             <% end %>
           </div>
-            <%= render 'messages/form' %>
+          <br>
+          <%= form_for [@conversation, Message.new] do |f| %>
+            <%= f.text_area :content, rows: 1, class: "form-control text_area", autofocus: true %>
+          <% end %>
         </div>
       </div>
     </div>

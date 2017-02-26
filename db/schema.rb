@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202065458) do
+ActiveRecord::Schema.define(version: 20170226062506) do
 
   create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
+    t.string   "between"
+    t.datetime "last_message"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20170202065458) do
     t.index ["user_id", "published_at"], name: "index_stories_on_user_id_and_published_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
     t.index ["user_id"], name: "index_stories_on_user_id_and_saved_at"
+  end
+
+  create_table "user_conversations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["conversation_id"], name: "index_user_conversations_on_conversation_id"
+    t.index ["user_id"], name: "index_user_conversations_on_user_id"
   end
 
   create_table "user_jobs", force: :cascade do |t|

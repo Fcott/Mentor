@@ -12,7 +12,9 @@ has_many :savings, -> { order(created_at: :desc) }, dependent: :destroy
 has_many :saved_stories, through: :savings, source: :story
 has_many :user_jobs, dependent: :destroy
 has_many :job_categories, through: :user_jobs
-has_one :profile, dependent: :destroy
+has_one  :profile, dependent: :destroy
+has_many :user_conversations
+has_many :conversations, through: :user_conversations
 accepts_nested_attributes_for :profile
 accepts_nested_attributes_for :user_jobs, allow_destroy: true, reject_if: ->(attrs) { attrs['job_category_id'].blank? || attrs['user_id'].blank? }
 
@@ -45,6 +47,10 @@ after_create :create_profile
 
   def unsaving!(story)
     savings.find_by(story_id: story.id).destroy
+  end
+
+  def user_of?(conversation)
+    user_conversations.find_by(conversation_id: conversation.id)
   end
 
 

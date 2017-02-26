@@ -1,15 +1,27 @@
 class Conversation < ApplicationRecord
-  belongs_to :sender, foreign_key: :sender_id, class_name: 'User'
-  belongs_to :recipient, foreign_key: :recipient_id, class_name: 'User'
-
+  has_many :user_conversations
+  has_many :users, through: :user_conversations
   has_many :messages, dependent: :destroy
-  validates_uniqueness_of :sender_id, scope: :recipient_id
 
-  scope :involving, -> (user) do
-    where("conversations.sender_id = ? OR conversations.recipient_id = ?", user.id, user.id )
+  scope :have_messages, -> { where.not(last_message: nil)  }
+  scope :desc_order, -> { order(last_message: :desc)  }
+
+  def self.conversations_for(users)
+    ids = users.map(&:id).sort
+    between = "ID:#{ids.join(",")}"
+    if conversation = where(between: between).first
+      conversation
+    else
+      conversation = new(between: between)
+      conversation.users = users
+      conversation.save
+      conversation
+    end
   end
 
-  scope :between, -> (sender_id, recipient_id) do
-    where("(conversations.sender_id = ? AND conversations.recipient_id = ?) OR (conversations.sender_id = ? AND conversations.recipient_id = ?)", sender_id, recipient_id, recipient_id, sender_id)
+
+  def the_other_user_of(user)
+    other = self.users - [user]
+    @the_other = User.find_by(id: other.map(&:id))
   end
 end

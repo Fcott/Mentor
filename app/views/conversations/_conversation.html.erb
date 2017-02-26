@@ -1,5 +1,4 @@
-<% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
-<% if conversation.messages.any? %>
+<% other = conversation.the_other_user_of(current_user) %>
   <%= link_to conversation do %>
     <div class="conversation table_cell">
       <div class="avatar inline-block">
@@ -14,4 +13,3 @@
       </div>
     </div>
   <% end %>
-<% end %>
