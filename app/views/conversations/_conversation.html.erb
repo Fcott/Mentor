@@ -1,6 +1,6 @@
 <% other = conversation.sender == current_user ? conversation.recipient : conversation.sender %>
 <% if conversation.messages.any? %>
-  <%= link_to conversation_messages_path(conversation) do %>
+  <%= link_to conversation do %>
     <div class="conversation table_cell">
       <div class="avatar inline-block">
         <%= image_tag user_picture(other), class: "img-circle pic-middle" %>

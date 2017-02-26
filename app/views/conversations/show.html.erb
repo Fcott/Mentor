@@ -8,10 +8,10 @@
         <div class="panel-body">
           <div class="messages_room">
             <% unless @messages.blank? %>
-              <%= render @messages, locals: {conversation: @conversation} %>
+              <%= render @messages %>
             <% end %>
           </div>
-            <%= render 'message_form' %>
+            <%= render 'messages/form' %>
         </div>
       </div>
     </div>
