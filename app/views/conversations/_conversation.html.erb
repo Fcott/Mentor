@@ -6,8 +6,8 @@
       </div>
       <div class="message_info inline-block">
         <span class="username"><%= other.username %></span>
-        <span class="timestamp "><%= conversation.messages.last.sent_time %></span>
-        <div class="content">
+        <span class="timestamp" data-behavior="timestamp" data-conversation-id='<%= conversation.id %>'><%= conversation.messages.last.sent_time %></span>
+        <div class="content" data-behavior="content" data-conversation-id='<%= conversation.id %>'>
           <%= conversation.messages.last.content %>
         </div>
       </div>

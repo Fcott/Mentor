@@ -5,6 +5,7 @@ module ApplicationCable
 
    def connect
      self.message_user = find_verified_user
+     logger.add_tags "ActionCable", "User #{message_user.id}"
    end
 
    private

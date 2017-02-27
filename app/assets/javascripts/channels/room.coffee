@@ -6,15 +6,19 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    unless data.message.blank?
-      $('.messages_room').append data.message
-      $('textarea[placeholder="write your message"]').val ''
+    active_room = $("[data-behavior='messages'][data-conversation-id='#{data.conversation_id}']")
+    if active_room.length > 0
+      active_room.append(data.message)
       scroll_bottom()
+    else
+      $("[data-behavior='room-name'][data-room-id='#{data.room_id}']").css("font-weight", "bold")
+      $("[data-behavior='timestamp'][data-room-id='#{data.room_id}']").text(data.timestamp)
+      $("[data-behavior='content'][data-room-id='#{data.room_id}']").text(data.content)
 
 
-$(document).on 'turbolinks:load', ->
-  scroll_bottom()
+  send_message: (conversation_id, message) ->
+    @perform "send_message", {conversation_id: conversation_id, content: message}
 
 
-scroll_bottom = () ->
-  $('.messages_room').scrollTop($('.messages_room')[0].scrollHeight)
+  scroll_bottom = () ->
+    $("[data-behavior='messages']").scrollTop($("[data-behavior='messages']")[0].scrollHeight)

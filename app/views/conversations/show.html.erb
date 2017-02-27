@@ -6,15 +6,17 @@
         Conversation with <%= @the_other.username %>
       </div>
         <div class="panel-body">
-          <div class="messages_room">
+          <div class="messages_room" data-behavior="messages" data-conversation-id="<%= @conversation.id %>">
             <% unless @messages.blank? %>
               <%= render @messages %>
             <% end %>
           </div>
           <br>
-          <%= form_for [@conversation, Message.new] do |f| %>
-            <%= f.text_area :content, rows: 1, class: "form-control text_area", autofocus: true %>
-          <% end %>
+          <div data-behavior="message-form" data-conversation-id="<%= @conversation.id %>">
+            <%= form_for [@conversation, Message.new] do |f| %>
+              <%= f.text_area :content, rows: 1, class: "form-control text_area", autofocus: true %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
