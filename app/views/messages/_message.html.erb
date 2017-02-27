@@ -1,18 +1,12 @@
-<div class="panel">
-  <div class="panel-body">
-    <div class="message_base table_cell">
-      <%= link_to user_path(message.user) do %>
-        <div class="avatar inline-block ">
-          <%= image_tag user_picture(message.user), class: "img-circle pic-middle" %>
-        </div>
-      <% end %>
-        <div class="message_info inline-block">
-          <span class="username"><%= message.user.username %></span>
-          <span class="timestamp"><%= message.sent_time %></span>
-          <div class="message_content">
-            <%= message.content %>
-          </div>
-        </div>
-    </div>
+<div class="message_base">
+  <span class="avatar inline-block table_cell">
+    <%= link_to user_path(message.user) do %>
+      <%= image_tag user_picture(message.user), class: "img-circle pic-middle" %>
+    <% end %>
+  </span>
+  <div class="message_info inline-block table_cell">
+    <div class="message_content"><%= message.content %></div>
+    <span class="username"><%= message.user.username %></span>
+    <span class="timestamp"><%= message.sent_time %></span>
   </div>
 </div>

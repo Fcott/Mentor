@@ -1,10 +1,10 @@
 <% other = conversation.the_other_user_of(current_user) %>
   <%= link_to conversation do %>
-    <div class="conversation table_cell">
-      <div class="avatar inline-block">
+    <div class="conversation">
+      <span class="avatar inline-block table_cell">
         <%= image_tag user_picture(other), class: "img-circle pic-middle" %>
-      </div>
-      <div class="message_info inline-block">
+      </span>
+      <div class="message_info inline-block table_cell">
         <span class="username"><%= other.username %></span>
         <span class="timestamp" data-behavior="timestamp" data-conversation-id='<%= conversation.id %>'><%= conversation.messages.last.sent_time %></span>
         <div class="content" data-behavior="content" data-conversation-id='<%= conversation.id %>'>

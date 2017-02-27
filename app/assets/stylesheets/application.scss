@@ -27,7 +27,7 @@ body {
 }
 
 .pic-middle {
-  width: 56px;
+  width: 48px;
 }
 
 .container {
@@ -302,11 +302,13 @@ body {
   word-wrap: break-word;
 
   .avatar {
-
+    vertical-align: middle;
   }
   .message_info{
     padding: 0 15px;
+    vertical-align: middle;
     .username {
+      font-size: 1.6em;
       font-weight: bold;
     }
     .timestamp {
@@ -329,18 +331,20 @@ body {
   text-rendering: auto;
   word-wrap: break-word;
   .avatar {
-
+    vertical-align: middle;
   }
   .message_info {
     padding: 0 15px;
+    vertical-align: middle;
     .username {
-      font-weight: bold;
+      color: rgba(0,0,0,.44);
     }
     .timestamp {
       font-size: 0.8em;
       color: rgba(0,0,0,.44);
     }
     .message_content {
+      font-size: 1.5em;
       max-width: inherit;
       display: block;
       word-wrap: break-word;
@@ -476,12 +480,12 @@ body {
 
   .conversation {
     .avatar {
-      vertical-align: top;
+      vertical-align: middle;
     }
   }
   .message_base {
     .avatar {
-      vertical-align: top;
+      vertical-align: middle;
     }
   }
 }
