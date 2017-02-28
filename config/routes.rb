@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: "pages#home"
+  get '/for_you' => 'pages#for_you'
 
   devise_for :users,
              :path => '',
