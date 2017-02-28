@@ -1,0 +1,12 @@
+<h3><%= @title %></h3>
+<div class="">
+  <% @users.each do |user| %>
+  <div class="user">
+    <span><%= image_tag user_picture(user), class: "img-circle pic-middle" %></span>
+    <span><%= user.username %></span>
+    <% unless current_user == user %>
+      <span class="inline-block"><%= render 'follow_form', user: user %></span>
+    <% end %>
+  </div>
+  <% end %>
+</div>

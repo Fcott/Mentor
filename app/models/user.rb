@@ -15,6 +15,10 @@ has_many :job_categories, through: :user_jobs
 has_one  :profile, dependent: :destroy
 has_many :user_conversations
 has_many :conversations, through: :user_conversations
+has_many :active_relationships, class_name: Relationship, foreign_key: :follower_id, dependent: :destroy
+has_many :followings, through: :active_relationships, source: :followed
+has_many :passive_relationships, class_name: Relationship, foreign_key: :followed_id, dependent: :destroy
+has_many :followers, through: :passive_relationships, source: :follower
 accepts_nested_attributes_for :profile
 accepts_nested_attributes_for :user_jobs, allow_destroy: true, reject_if: ->(attrs) { attrs['job_category_id'].blank? || attrs['user_id'].blank? }
 
@@ -51,6 +55,18 @@ after_create :create_profile
 
   def user_of?(conversation)
     user_conversations.find_by(conversation_id: conversation.id)
+  end
+
+  def follow(other_user)
+    followings << other_user
+  end
+
+  def unfollow(other_user)
+    followings.delete(other_user)
+  end
+
+  def following?(other_user)
+    followings.include?(other_user)
   end
 
 

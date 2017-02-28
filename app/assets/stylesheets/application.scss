@@ -115,12 +115,27 @@ body {
 // user page
 
 .user_top {
+  vertical-align: middle;
   margin: 30px 10px;
+  .user_info{
+    vertical-align: middle;
+    padding-left: 15px;
+    .user_name {
+      font-size: 20px;
+    }
+  }
 }
-.user_name {
-  font-size: 20px;
-  padding-left: 15px;
+
+.stats {
+  margin-left: 10px;
+  a {
+    padding: 0 10px;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
 }
+
 
 
 .head_lists {
@@ -139,6 +154,13 @@ body {
       font-weight: bold;
     }
 }
+
+// show_follow
+  .user {
+    span {
+      padding: 0 7px;
+    }
+  }
 
 // Home Page
 
@@ -424,7 +446,6 @@ body {
   }
   .user_name {
     font-size: 16px;
-    padding-left: 10px;
   }
   .btn {
     padding: 6px 12px;
