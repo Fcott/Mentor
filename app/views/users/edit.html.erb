@@ -2,18 +2,18 @@
   <div class="col-md-8 col-md-offset-2 col-sm-12">
     <div class="user_top">
       <div class="avatar inline-block">
-        <%= image_tag user_picture(@user), class: "img-circle pic-middle" %>
-        <strong class="user_name"><%= @user.username%></strong>
-        <% unless @job_categories.blank? %>
-          <div>
-            <% @job_categories.each do |j| %>
-              <%= j.name %>
-            <% end %>
-          </div>
-        <% end %>
-
+        <span class="table_cell"><%= image_tag user_picture(@user), class: "img-circle pic-middle" %></span>
+        <div class="user_info table_cell">
+          <div class="user_name"><%= @user.username%></div>
+          <% unless @job_categories.blank? %>
+            <div>
+              <% @job_categories.each do |j| %>
+                <%= j.name %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-
     </div>
 
     <ul class="head_lists center">
