@@ -62,7 +62,7 @@ after_create :create_profile
   end
 
   def unfollow(other_user)
-    followings.delete(other_user)
+    followings.destroy(other_user)
   end
 
   def following?(other_user)
