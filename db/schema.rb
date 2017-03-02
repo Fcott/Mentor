@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301031159) do
+ActiveRecord::Schema.define(version: 20170302025707) do
 
   create_table "conversations", force: :cascade do |t|
     t.string   "between"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170301031159) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_job_categories_on_parent_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["story_id"], name: "index_likes_on_story_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|

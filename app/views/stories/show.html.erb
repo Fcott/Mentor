@@ -33,20 +33,23 @@
           <%= @story.content %>
         </div>
 
-        <% if current_user == @story.user %>
-          <span class="edit">
-            <%= link_to "edit", edit_story_path(@story) %>
-          </span class="delete">
-          <span>
-            <%= link_to "delete", @story, method: :delete, data: {confirm: "You sure?"} %>
-          </span>
-        <% end %>
-
-        <% if user_signed_in? %>
-          <div class="saving_btn<%= @story.id %> inline-block pull-right">
-            <%= render 'savings/saving_btn', story: @story %>
-          </div>
-        <% end %>
+        <div class="bottom_actions">
+          <% if current_user == @story.user %>
+            <div class="inline-block">
+              <%= link_to "edit", edit_story_path(@story) %>
+            </div>
+            <div class="inline-block">
+              <%= link_to "delete", @story, method: :delete, data: {confirm: "You sure?"} %>
+            </div>
+          <% else %>
+            <div id="likes_btn<%= @story.id %>" class="inline-block">
+              <%= render 'stories/likes', story: @story %>
+            </div>
+            <div class="saving_btn<%= @story.id %> inline-block pull-right">
+              <%= render 'savings/saving_btn', story: @story %>
+            </div>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

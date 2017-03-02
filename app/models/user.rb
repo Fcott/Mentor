@@ -19,6 +19,7 @@ has_many :active_relationships, class_name: Relationship, foreign_key: :follower
 has_many :followings, through: :active_relationships, source: :followed
 has_many :passive_relationships, class_name: Relationship, foreign_key: :followed_id, dependent: :destroy
 has_many :followers, through: :passive_relationships, source: :follower
+has_many :likes
 accepts_nested_attributes_for :profile
 accepts_nested_attributes_for :user_jobs, allow_destroy: true, reject_if: ->(attrs) { attrs['job_category_id'].blank? || attrs['user_id'].blank? }
 
@@ -69,6 +70,9 @@ after_create :create_profile
     followings.include?(other_user)
   end
 
+  def likes?(story)
+    likes.find_by(story_id: story.id)
+  end
 
   private
   def create_profile

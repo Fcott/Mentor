@@ -17,9 +17,12 @@ Rails.application.routes.draw do
       get :followings, :followers
     end
   end
+
   resources :profiles,       only: [:edit, :update]
 
-  resources :stories
+  resources :stories do
+    resource :like, module: :stories
+  end
 
   resources :conversations,  only: [:index, :show, :create] do
     resources :messages,     only: [:create]
