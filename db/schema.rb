@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302025707) do
+ActiveRecord::Schema.define(version: 20170302054420) do
 
   create_table "conversations", force: :cascade do |t|
     t.string   "between"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20170302025707) do
     t.datetime "updated_at",                    null: false
     t.boolean  "draft",          default: true
     t.datetime "published_at"
+    t.integer  "likes_count",    default: 0,    null: false
     t.index ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
     t.index ["user_id", "published_at"], name: "index_stories_on_user_id_and_published_at"
     t.index ["user_id"], name: "index_stories_on_user_id"
