@@ -31,5 +31,10 @@ Rails.application.routes.draw do
   resources :savings,        only: [:create, :destroy]
   resources :job_categories, only: [:show]
   resources :relationships,  only: [:create, :destroy]
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
 end

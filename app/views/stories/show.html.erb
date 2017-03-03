@@ -33,6 +33,7 @@
           <%= @story.content %>
         </div>
 
+        <% if user_signed_in? %>
         <div class="bottom_actions">
           <% if current_user == @story.user %>
             <div class="inline-block">
@@ -50,6 +51,7 @@
             </div>
           <% end %>
         </div>
+        <% end %>
     </div>
   </div>
 </div>

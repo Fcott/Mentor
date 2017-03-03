@@ -5,6 +5,9 @@ class Stories::LikesController < ApplicationController
   def create
     @story.likes.where(user_id: current_user.id).first_or_create
 
+    recipient = @story.user
+    Notification.create(recipient: recipient, actor: current_user, action: 'likes', notifiable: @story)
+
     respond_to do |format|
       format.html { redirect_back(fallback_location: root_path) }
       format.js

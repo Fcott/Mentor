@@ -13,6 +13,7 @@ class Story < ApplicationRecord
   has_many :savings
   has_many :saved_users, through: :savings, source: :user
   has_many :likes
+  has_many :notifications, as: :notifiable
 
   def as_draft
     update_attributes!(draft: true)
