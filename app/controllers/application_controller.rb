@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_notification
-    @notifications = Notification.where(recipient: current_user).unread
+    @notifications = Notification.where(recipient: current_user).recent
   end
 
   protected

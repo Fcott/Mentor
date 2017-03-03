@@ -20,7 +20,7 @@ has_many :followings, through: :active_relationships, source: :followed
 has_many :passive_relationships, class_name: Relationship, foreign_key: :followed_id, dependent: :destroy
 has_many :followers, through: :passive_relationships, source: :follower
 has_many :likes
-has_many :notifications, foreign_key: :recipient_id
+has_many :notifications, foreign_key: :recipient_id, as: :notifiable
 accepts_nested_attributes_for :profile
 accepts_nested_attributes_for :user_jobs, allow_destroy: true, reject_if: ->(attrs) { attrs['job_category_id'].blank? || attrs['user_id'].blank? }
 
