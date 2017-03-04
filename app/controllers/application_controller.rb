@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   def set_notification
     @notifications = Notification.where(recipient: current_user).recent
+    @unread_count = @notifications.unread.count
+    @no_notifications_message = 'No notifications yet' 
   end
 
   protected

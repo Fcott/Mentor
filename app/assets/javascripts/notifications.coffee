@@ -3,12 +3,13 @@ class Notifications
     @notifications = $("[data-behavior='notifications']")
 
     if @notifications.length > 0
+      @getNewNotifications()
       @handleSuccess @notifications.data('notifications')
       $("[data-behavior='notifications-link']").on "click", @handleClick
 
       setInterval (=>
         @getNewNotifications()
-      ), 5000
+      ), 8000
 
   getNewNotifications: ->
     $.ajax(
@@ -37,7 +38,8 @@ class Notifications
         unread_count += 1
 
     $("[data-behavior='unread-count']").text(unread_count)
-    $("[data-behavior='notification-items']").html(items)
+    $("[data-behavior='notification-items']").html(items) unless items.length == 0
 
-jQuery ->
-  new Notifications
+$(document).on "turbolinks:load", ->
+  jQuery ->
+    new Notifications

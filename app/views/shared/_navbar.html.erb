@@ -26,10 +26,12 @@
         <% else %>
         <li class="dropdown" data-behavior="notifications" data-notification="<%= render template: 'notifications/index', formats: [:json] %>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-behavior='notifications-link' role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-bell-o" aria-hidden="true"></i><span data-behavior='unread-count'></span>
+            <i class="fa fa-bell-o" aria-hidden="true"></i><span data-behavior='unread-count'><%= @unread_count %></span>
           </a>
           <ul class="dropdown-menu" data-behavior='notification-items'>
-
+            <% if @notifications.count == 0  %>
+              <li class="dropdown-item center" ><%= @no_notifications_message %></li>
+            <% end %>
           </ul>
         </li>
         <li class="dropdown">

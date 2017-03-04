@@ -3,6 +3,8 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = Notification.where(recipient: current_user).recent
+    @unread_count = @notifications.unread.count
+    @no_notifications_message = 'No notifications yet' 
   end
 
   def mark_as_read
