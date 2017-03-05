@@ -36,6 +36,7 @@ gem 'seed-fu', '~> 2.3'
 gem 'redis'
 gem 'cocoon'
 gem 'jquery-ui-rails'
+gem 'rack-mini-profiler'
 
 
 group :development, :test do
