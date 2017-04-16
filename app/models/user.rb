@@ -47,11 +47,11 @@ after_create :create_profile
     savings.find_by(story_id: story.id)
   end
 
-  def saving!(story)
-    savings.create!(story_id: story.id)
+  def saving(story)
+    savings.create(story_id: story.id)
   end
 
-  def unsaving!(story)
+  def unsaving(story)
     savings.find_by(story_id: story.id).destroy
   end
 
